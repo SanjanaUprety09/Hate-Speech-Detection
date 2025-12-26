@@ -31,4 +31,4 @@ if st.button("Predict"):
         result = "Hate Speech 😡" if prediction == 1 else "Not Hate Speech 😊"
         st.title(f"Prediction: **{result}**")
     else:
-        st.title("Please enter a tweet.")     will this work fine
+        st.title("Please enter a tweet.")    
