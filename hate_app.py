@@ -21,14 +21,21 @@ def clean_text(text):
 # Streamlit App
 st.title("Twitter Sentiment Analysis")
 st.write("Enter a tweet to classify it as Hate Speech or Not Hate Speech.")
+# Input area
 user_input = st.text_area("Enter Tweet:", "")
+
+# Prediction button
 if st.button("Predict"):
-    if user_input.strip() != "":
+    if user_input.strip():  # Checks if input is not empty
+        # Preprocess and transform
         cleaned_text = clean_text(user_input)
         transformed_text = vectorizer.transform([cleaned_text])
+
+        # Make prediction
         prediction = svm_model.predict(transformed_text)[0]
 
+        # Display result
         result = "Hate Speech 😡" if prediction == 1 else "Not Hate Speech 😊"
-        st.title(f"Prediction: **{result}**")
+        st.success(f"Prediction: **{result}**")
     else:
-        st.title("Please enter a tweet.")    
+        st.warning("⚠️ Please enter a tweet before predicting.") 
