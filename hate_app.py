@@ -13,6 +13,7 @@ stop_words = set(stopwords.words('english'))
 # -----------------------------
 svm_model = joblib.load("svm_model.pkl")
 vectorizer = joblib.load("tfidf_vectorizer.pkl")
+st.write("Vectorizer fitted:", hasattr(vectorizer, "idf_"))
 
 # -----------------------------
 # Text cleaning function
